@@ -1,0 +1,16 @@
+# Standard ignore rules for Eclipse IntelliJ IDEA and Sublime
+*.iml
+*.ipr
+*.iws
+*.sublime-*
+*.swp
+.classpath
+.gradle
+.idea
+.project
+.settings
+bin
+build
+ligradle
+target
+test-logs

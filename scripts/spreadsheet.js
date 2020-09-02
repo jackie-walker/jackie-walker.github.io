@@ -63,7 +63,8 @@ export function generateSpreadsheet(username) {
                 columns: username === admin[0] ? columns_admin : columns_user,
                 hiddenColumns: {
                     columns: hidden_column_indexes
-                }
+                },
+                trimDropdown: false
             });
 
             // Remove previously added button
