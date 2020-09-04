@@ -7,23 +7,11 @@ export let category_2_values = ['Rice', 'Burger', 'Pizza', 'Pasta', 'BBQ', 'Frui
 export let category_3_values = ['Chicken', 'Beef', 'Mutton', 'Pork', 'Lamb', 'Quail', 'Eggs', 'Vegan', 'Vegetarian', 'Crab', 'Healthy', 'Turkey', 'Duck', 'Cuttlefish', 'Prawns', 'Gluten-free', 'Lactose Intolerant', 'Milk', 'Nuts']
 export let category_4_values = ['Spicy', 'Cheesy', 'Sweet', 'Pickles']
 export let category_5_values = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snacks']
-export let hidden_column_indexes = [0, 2, 3, 4, 6, 7, 8, 9]
-export let column_headers_user = ['ItemId', 'ItemName', 'ItemLabel', 'CreatedDatetime', 'UpdatedDatetime', 'RestaurantId', 'MenuCatId', 'DeliveryEnabled', 'isAvailable', 'LastUpdatedDate', 'Category1', 'Category2', 'Category3', 'Category4', 'Category5']
-export let column_headers_admin = ['ItemId', 'ItemName', 'ItemLabel', 'CreatedDatetime', 'UpdatedDatetime', 'RestaurantId', 'MenuCatId', 'DeliveryEnabled', 'isAvailable', 'LastUpdatedDate', 'Category1', 'Category2', 'Category3', 'Category4', 'Category5', 'Verified']
+export let hidden_column_indexes = [3]
+export let column_headers_user = ['ItemId', 'ItemName', 'RestaurantId', 'LastUpdatedDate', 'Category1', 'Category2', 'Category3', 'Category4', 'Category5']
+export let column_headers_admin = ['ItemId', 'ItemName', 'RestaurantId', 'LastUpdatedDate', 'Category1', 'Category2', 'Category3', 'Category4', 'Category5', 'Verified']
 export let columns_user = [
     {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
         editor: false
     }, {
         editor: false
@@ -65,4 +53,4 @@ export let columns_admin = columns_user.concat([
     }
 ]);
 export let hands_on_table_license = 'non-commercial-and-evaluation'
-export let csv_validation_value = ',,,,,'
+export let csv_validation_value = ',,,'
