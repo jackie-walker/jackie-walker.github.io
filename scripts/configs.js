@@ -34,70 +34,34 @@ export let columns_user = [
     },
     {
         type: 'dropdown',
-        source: category_1_values
+        source: category_1_values,
+        trimDropdown: false
     },
     {
         type: 'dropdown',
-        source: category_2_values
+        source: category_2_values,
+        trimDropdown: false
     },
     {
         type: 'dropdown',
-        source: category_3_values
+        source: category_3_values,
+        trimDropdown: false
     },
     {
         type: 'dropdown',
-        source: category_4_values
+        source: category_4_values,
+        trimDropdown: false
     },
     {
         type: 'dropdown',
-        source: category_5_values
+        source: category_5_values,
+        trimDropdown: false
     }
 ]
-export let columns_admin = [
-    {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    }, {
-        editor: false
-    },
-    {
-        type: 'dropdown',
-        source: category_1_values
-    },
-    {
-        type: 'dropdown',
-        source: category_2_values
-    },
-    {
-        type: 'dropdown',
-        source: category_3_values
-    },
-    {
-        type: 'dropdown',
-        source: category_4_values
-    },
-    {
-        type: 'dropdown',
-        source: category_5_values
-    },
+export let columns_admin = columns_user.concat([
     {
         type: 'dropdown',
         source: ['Yes', 'No']
     }
-]
+]);
 export let hands_on_table_license = 'non-commercial-and-evaluation'

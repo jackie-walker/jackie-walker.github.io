@@ -52,6 +52,7 @@ export function generateSpreadsheet(username) {
 
             // Read file data to text format using Papa CSV lib
             let data = Papa.parse(reader.result).data;
+            let restaurantName = data[0].toString().replaceAll(',', ' ').trim();
 
             // Create HandsOnTable spreadsheet area in the newly added spreadsheet area
             let container = document.getElementById('spreadsheet-area');
@@ -63,9 +64,11 @@ export function generateSpreadsheet(username) {
                 columns: username === admin[0] ? columns_admin : columns_user,
                 hiddenColumns: {
                     columns: hidden_column_indexes
-                },
-                trimDropdown: false
+                }
             });
+
+            // Set restaurant name in the UI
+            $("#restaurant-name-area").text(restaurantName);
 
             // Remove previously added button
             $("#btn-export").remove();
@@ -94,16 +97,22 @@ export function generateSpreadsheet(username) {
 
             // Add event listener to export button on click
             button1.addEventListener('click', function () {
+
+                hot.alter('insert_row', 0);
+                hot.setDataAtCell(0, 0, restaurantName);
+
                 exportPlugin1.downloadFile('csv', {
                     bom: false,
                     columnDelimiter: ',',
-                    columnHeaders: true,
+                    columnHeaders: false,
                     exportHiddenColumns: true,
                     fileExtension: 'csv',
                     filename: fileName,
                     mimeType: 'text/csv',
                     rowDelimiter: '\n'
                 });
+
+                hot.alter('remove_row', 0);
             });
 
         };
