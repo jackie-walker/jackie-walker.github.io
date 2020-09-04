@@ -128,5 +128,36 @@
     </div>
 </div>
 
+<!-- Hidden CSV not validated modal area -->
+<div class="modal fade" id="modalCSVInvalid" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Modal header -->
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Error</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Invalid CSV File:</strong> Please only use CSV files provided by the Big Data and Data
+                    Science team.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!-- Okay button -->
+                <div class="modal-footer row">
+                    <button id="btn-okay-csv" type="button" class="btn btn-info" style="width: 100%"
+                            onclick="$('#modalCSVInvalid').modal('hide')">Okay
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

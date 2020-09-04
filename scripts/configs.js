@@ -65,3 +65,4 @@ export let columns_admin = columns_user.concat([
     }
 ]);
 export let hands_on_table_license = 'non-commercial-and-evaluation'
+export let csv_validation_value = ',,,,,'
