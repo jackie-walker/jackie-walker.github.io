@@ -9,7 +9,9 @@ import {
     columns_user,
     columns_admin,
     hands_on_table_license,
-    hidden_column_indexes, csv_validation_value
+    hidden_column_indexes,
+    delimiter,
+    csv_validation_value
 } from './configs.js';
 
 // Import users
@@ -42,7 +44,7 @@ export function generateSpreadsheet(username) {
         reader.onload = function () {
 
             // Read file data to text format using Papa CSV lib
-            let data = Papa.parse(reader.result).data;
+            let data = Papa.parse(reader.result, {delimiter: delimiter}).data;
 
             // First row is taken as the validation row
             let validationRow = data[0].toString();
@@ -66,6 +68,7 @@ export function generateSpreadsheet(username) {
                 let container = document.getElementById('spreadsheet-area');
                 let hot = new Handsontable(container, {
                     data: data.slice(1),
+                    delimiter: delimiter,
                     rowHeaders: true,
                     licenseKey: hands_on_table_license,
                     colHeaders: username === admin[0] ? column_headers_admin : column_headers_user,
@@ -113,7 +116,7 @@ export function generateSpreadsheet(username) {
 
                     exportPlugin1.downloadFile('csv', {
                         bom: false,
-                        columnDelimiter: ',',
+                        columnDelimiter: delimiter,
                         columnHeaders: false,
                         exportHiddenColumns: true,
                         fileExtension: 'csv',
