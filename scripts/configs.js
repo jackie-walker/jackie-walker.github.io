@@ -9,8 +9,8 @@ export let category_4_values = ['Breakfast', 'Brunch', 'Dinner', 'Lunch', 'Snack
 export let category_5_values = ['Cold', 'Frozen', 'Hot']
 export let category_6_values = ['Cheesy', 'Crispy', 'Devilled', 'Fried', 'Garlic', 'Grilled', 'Masala', 'Pickles', 'Roast', 'Spicy', 'Stew', 'Sweet', 'Tandoori']
 export let hidden_column_indexes = [3]
-export let column_headers_user = ['ItemId', 'ItemName', 'RestaurantId', 'LastUpdatedDate', 'Category1', 'Category2', 'Category3', 'Category4', 'Category5', 'Category6']
-export let column_headers_admin = ['ItemId', 'ItemName', 'RestaurantId', 'LastUpdatedDate', 'Category1', 'Category2', 'Category3', 'Category4', 'Category5', 'Category6', 'Verified']
+export let column_headers_user = ['ItemId', 'ItemName', 'RestaurantId', 'LastUpdatedDate', 'Region', 'Basic Type', 'Dietary Preference', 'Meal Time', 'Food State', 'Other']
+export let column_headers_admin = ['ItemId', 'ItemName', 'RestaurantId', 'LastUpdatedDate', 'Region', 'Basic Type', 'Dietary Preference', 'Meal Time', 'Food State', 'Other', 'Verified']
 export let columns_user = [
     {
         editor: false
