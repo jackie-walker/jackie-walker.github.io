@@ -43,6 +43,8 @@ export function generateSpreadsheet(username) {
         // Override reader onload functionality
         reader.onload = function () {
 
+            console.log("Spreadsheet generation started")
+
             // Read file data to text format using Papa CSV lib
             let data = Papa.parse(reader.result, {delimiter: delimiter}).data;
 
@@ -51,6 +53,8 @@ export function generateSpreadsheet(username) {
 
             // Progress only if CSV is validated
             if (validationRow.indexOf(csv_validation_value) !== -1) {
+
+                console.log("Spreadsheet validated")
 
                 // Remove animated area
                 $("#svg-animation").remove();
@@ -108,6 +112,8 @@ export function generateSpreadsheet(username) {
 
                 // Add event listener to export button on click
                 button1.addEventListener('click', function () {
+
+                    console.log("Download button clicked")
 
                     // Create an empty row with restaurant name on top
                     // This is done to include the name in the exported CSV
