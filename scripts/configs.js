@@ -61,3 +61,4 @@ export let columns_admin = columns_user.concat([
 export let hands_on_table_license = 'non-commercial-and-evaluation';
 export let delimiter = '\u001f';
 export let csv_validation_value = ',,,';
+export let papa_parse_quote_value = "''''"

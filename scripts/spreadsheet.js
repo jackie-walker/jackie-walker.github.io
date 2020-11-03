@@ -11,7 +11,8 @@ import {
     hands_on_table_license,
     hidden_column_indexes,
     delimiter,
-    csv_validation_value
+    csv_validation_value,
+    papa_parse_quote_value
 } from './configs.js';
 
 // Import users
@@ -46,7 +47,12 @@ export function generateSpreadsheet(username) {
             console.log("Spreadsheet generation started")
 
             // Read file data to text format using Papa CSV lib
-            let data = Papa.parse(reader.result, {delimiter: delimiter}).data;
+            let data = Papa.parse(reader.result, {delimiter: delimiter, quoteChar: papa_parse_quote_value}).data;
+
+            // Handle duplicating double quotes issue
+            for (let i = 0; i < data.length; i++) {
+                data[i][1] = typeof data[i][1] === 'string' ? data[i][1].replaceAll('""', '') : data[i][1]
+            }
 
             // First row is taken as the validation row
             let validationRow = data[0].toString();
