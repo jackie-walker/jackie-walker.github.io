@@ -49,11 +49,6 @@ export function generateSpreadsheet(username) {
             // Read file data to text format using Papa CSV lib
             let data = Papa.parse(reader.result, {delimiter: delimiter, quoteChar: papa_parse_quote_value}).data;
 
-            // Handle duplicating double quotes issue
-            for (let i = 0; i < data.length; i++) {
-                data[i][1] = typeof data[i][1] === 'string' ? data[i][1].replaceAll('""', '') : data[i][1]
-            }
-
             // First row is taken as the validation row
             let validationRow = data[0].toString();
 
@@ -99,7 +94,6 @@ export function generateSpreadsheet(username) {
 
                 // Set up variables required for CSV export
                 let button1 = document.getElementById('btn-export');
-                let exportPlugin1 = hot.getPlugin('exportFile');
                 let currentDate = new Date();
                 let dateStr = currentDate.getFullYear() + "-"
                     + (currentDate.getMonth() + 1) + "-"
@@ -116,6 +110,9 @@ export function generateSpreadsheet(username) {
                     fileName = fileName + " - APPROVED"
                 }
 
+                // Final file name
+                fileName = fileName + ".csv"
+
                 // Add event listener to export button on click
                 button1.addEventListener('click', function () {
 
@@ -126,19 +123,32 @@ export function generateSpreadsheet(username) {
                     hot.alter('insert_row', 0);
                     hot.setDataAtCell(0, 0, restaurantName);
 
-                    exportPlugin1.downloadFile('csv', {
-                        bom: false,
-                        columnDelimiter: delimiter,
-                        columnHeaders: false,
-                        exportHiddenColumns: true,
-                        fileExtension: 'csv',
-                        filename: fileName,
-                        mimeType: 'text/csv',
-                        rowDelimiter: '\n'
-                    });
+                    // Read data into CSV format and replace quotes with empty string
+                    let csv = Papa.unparse(hot.getData(), {
+                        delimiter: delimiter,
+                        quoteChar: papa_parse_quote_value,
+                        quotes: false
+                    }).replaceAll(papa_parse_quote_value, '')
 
-                    // Remove the added row for restaurant name
+                    // Remove the added row for restaurant name after data is read
                     hot.alter('remove_row', 0);
+
+                    // Create blob from csv string
+                    let csvData = new Blob([csv], {type: 'text/csv;charset=utf-8;'})
+
+                    // Set up download link for the CSV file
+                    let csvURL = null
+                    if (navigator.msSaveBlob) {
+                        csvURL = navigator.msSaveBlob(csvData, fileName);
+                    } else {
+                        csvURL = window.URL.createObjectURL(csvData);
+                    }
+
+                    // Create temporary anchor element and click it programmatically to start download
+                    let tempLink = document.createElement('a');
+                    tempLink.href = csvURL;
+                    tempLink.setAttribute('download', fileName);
+                    tempLink.click();
                 });
             } else {
                 // Show CSV not validated error
